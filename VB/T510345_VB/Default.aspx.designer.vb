@@ -23,15 +23,6 @@ Partial Public Class WebForm1
     Protected WithEvents form1 As Global.System.Web.UI.HtmlControls.HtmlForm
     
     '''<summary>
-    '''Callback control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Callback As Global.DevExpress.Web.ASPxCallback
-    
-    '''<summary>
     '''Info control.
     '''</summary>
     '''<remarks>
@@ -122,24 +113,6 @@ Partial Public Class WebForm1
     Protected WithEvents birthDateEdit As Global.DevExpress.Web.ASPxDateEdit
     
     '''<summary>
-    '''LayoutItemNestedControlContainer5 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LayoutItemNestedControlContainer5 As Global.DevExpress.Web.LayoutItemNestedControlContainer
-    
-    '''<summary>
-    '''ASPxGridView1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
-    
-    '''<summary>
     '''LayoutItemNestedControlContainer7 control.
     '''</summary>
     '''<remarks>
@@ -158,13 +131,22 @@ Partial Public Class WebForm1
     Protected WithEvents phoneNumberTestBox As Global.DevExpress.Web.ASPxTextBox
     
     '''<summary>
-    '''LayoutItemNestedControlContainer8 control.
+    '''LayoutItemNestedControlContainer5 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents LayoutItemNestedControlContainer8 As Global.DevExpress.Web.LayoutItemNestedControlContainer
+    Protected WithEvents LayoutItemNestedControlContainer5 As Global.DevExpress.Web.LayoutItemNestedControlContainer
+    
+    '''<summary>
+    '''ASPxGridView1 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ASPxGridView1 As Global.DevExpress.Web.ASPxGridView
     
     '''<summary>
     '''submitButton control.
@@ -174,15 +156,6 @@ Partial Public Class WebForm1
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents submitButton As Global.DevExpress.Web.ASPxButton
-    
-    '''<summary>
-    '''LayoutItemNestedControlContainer9 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents LayoutItemNestedControlContainer9 As Global.DevExpress.Web.LayoutItemNestedControlContainer
     
     '''<summary>
     '''cancelButton control.
