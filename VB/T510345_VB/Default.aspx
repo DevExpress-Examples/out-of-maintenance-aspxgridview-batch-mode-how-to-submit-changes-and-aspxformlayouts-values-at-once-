@@ -1,48 +1,43 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
-<%@ Register Assembly="DevExpress.Web.v18.1, Version=18.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Default.aspx.vb" Inherits="T510345_VB.WebForm1" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script type="text/javascript">
-        var isDirty = false;
-        function onSubmit(s, e) {
-            if (!ASPxClientEdit.ValidateEditorsInContainer(formLayout.GetMainElement())) return;
+     <script type="text/javascript">
+         var isDirty = false;
+         function onSubmit(s, e) {
+             if (!ASPxClientEdit.ValidateEditorsInContainer(null)) return;
 
-            if (grid.batchEditApi.HasChanges())
-                grid.UpdateEdit();
-            else grid.PerformCallback();
-        }
+             if (grid.batchEditApi.HasChanges())
+                 grid.UpdateEdit();
+             else grid.PerformCallback();
+         }
 
-        function onCancel(s, e) {
-            grid.CancelEdit();
-            ASPxClientEdit.ClearEditorsInContainer(formLayout.GetMainElement());
-            isDirty = false;
-            submitButton.SetEnabled(false);
-            cancelButton.SetEnabled(false);
-        }
+         function onCancel(s, e) {
+             grid.CancelEdit();
+             ASPxClientEdit.ClearEditorsInContainer(formLayout.GetMainElement());
+         }
 
-        function EndCallback(s, e) {
-            if (s.cpInfo) {
-                lblInfo.SetText(s.cpInfo);
-                delete s.cpInfo;
-            }
-        }
+         function EndCallback(s, e) {
+             if (s.cpInfo) {
+                 lblInfo.SetText(s.cpInfo);
+                 delete s.cpInfo;
+             }
+         }
 
-        function onControlsInitialized(s, e) {
-            ASPxClientEdit.AttachEditorModificationListener(onEditorsChanged, function (control) {
-                return control.GetParentControl() === formLayout // Gets standalone editors nested inside the form layout control
-            });
-        }
+         function onControlsInitialized(s, e) {
+             ASPxClientEdit.AttachEditorModificationListener(onEditorsChanged, function (control) {
+                 return control.GetParentControl() === formLayout // Gets standalone editors nested inside the form layout control
+             });
+         }
 
-        function onEditorsChanged(s, e) {
-            submitButton.SetEnabled(true);
-            cancelButton.SetEnabled(true);
-            isDirty = true;
-        }
+         function onEditorsChanged(s, e) {
+             submitButton.SetEnabled(true);
+             cancelButton.SetEnabled(true);
+             isDirty = true;
+         }
     </script>
 </head>
 <body>
