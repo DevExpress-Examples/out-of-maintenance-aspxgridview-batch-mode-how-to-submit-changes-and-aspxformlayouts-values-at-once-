@@ -7,49 +7,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script>
+    <script type="text/javascript">
         function onSubmit(s, e) {
+            if (!ASPxClientEdit.ValidateEditorsInContainer(formLayout.GetMainElement())) return;
+
             if (grid.batchEditApi.HasChanges())
                 grid.UpdateEdit();
-            else callback.PerformCallback();
-
+            else grid.PerformCallback();
         }
+
         function onCancel(s, e) {
             grid.CancelEdit();
             ASPxClientEdit.ClearEditorsInContainer(formLayout.GetMainElement());
         }
-        var command;
+
         function EndCallback(s, e) {
+            if (s.cpInfo) {
                 lblInfo.SetText(s.cpInfo);
-        }
-        function Callback_CallbackComplete(s, e) {
-            lblInfo.SetText(e.result);
+                delete s.cpInfo;
+            }
         }
     </script>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-            <dx:ASPxCallback runat="server" ID="Callback" ClientInstanceName="callback" OnCallback="Callback_Callback">
-                <ClientSideEvents  CallbackComplete="Callback_CallbackComplete" />
-            </dx:ASPxCallback>
-            <dx:ASPxLabel runat="server" ID="Info" ClientInstanceName="lblInfo" Font-Size="X-Large" ForeColor="Red"> 
+        <div style="display: inline-block">
+            <dx:ASPxLabel runat="server" ID="Info" ClientInstanceName="lblInfo" Font-Size="X-Large" ForeColor="Green"> 
             </dx:ASPxLabel>
-            <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ClientInstanceName="formLayout" AlignItemCaptionsInAllGroups="True">
+            <dx:ASPxFormLayout ID="ASPxFormLayout1" runat="server" ClientInstanceName="formLayout" AlignItemCaptionsInAllGroups="True" Width="520px">
                 <Items>
-                    <dx:LayoutGroup Caption="Personal Information" GroupBoxDecoration="HeadingLine">
+                    <dx:LayoutGroup Caption="Main Information">
                         <Items>
                             <dx:LayoutItem Caption="First Name" FieldName="FirstName">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer1" runat="server" SupportsDisabledAttribute="True">
-                                        <dx:ASPxTextBox ID="firstNameTextBox" runat="server" Width="200px" />
+                                        <dx:ASPxTextBox ID="firstNameTextBox" runat="server" Width="200px">
+                                            <ValidationSettings Display="Dynamic" SetFocusOnError="true">
+                                                <RequiredField IsRequired="true" ErrorText="The First Name is required." />
+                                            </ValidationSettings>
+                                        </dx:ASPxTextBox>
                                     </dx:LayoutItemNestedControlContainer>
                                 </LayoutItemNestedControlCollection>
                             </dx:LayoutItem>
                             <dx:LayoutItem Caption="Last Name" FieldName="LastName">
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer2" runat="server" SupportsDisabledAttribute="True">
-                                        <dx:ASPxTextBox ID="lastNameTextBox" runat="server" Width="200px" />
+                                        <dx:ASPxTextBox ID="lastNameTextBox" runat="server" Width="200px">
+                                            <ValidationSettings Display="Dynamic" SetFocusOnError="true">
+                                                <RequiredField IsRequired="true" ErrorText="The Last Name is required." />
+                                            </ValidationSettings>
+                                        </dx:ASPxTextBox>
                                     </dx:LayoutItemNestedControlContainer>
                                 </LayoutItemNestedControlCollection>
                             </dx:LayoutItem>
@@ -62,6 +69,7 @@
                                                 <dx:ListEditItem Text="Female" Value="Female" />
                                             </Items>
                                             <Border BorderStyle="None" />
+                                            <Paddings PaddingLeft="0" />
                                         </dx:ASPxRadioButtonList>
                                     </dx:LayoutItemNestedControlContainer>
                                 </LayoutItemNestedControlCollection>
@@ -70,30 +78,6 @@
                                 <LayoutItemNestedControlCollection>
                                     <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer4" runat="server" SupportsDisabledAttribute="True">
                                         <dx:ASPxDateEdit ID="birthDateEdit" runat="server" Width="200px" />
-                                    </dx:LayoutItemNestedControlContainer>
-                                </LayoutItemNestedControlCollection>
-                            </dx:LayoutItem>
-                        </Items>
-                    </dx:LayoutGroup>
-                    <dx:LayoutGroup Caption="Location" GroupBoxDecoration="HeadingLine">
-                        <Items>
-                            <dx:LayoutItem Caption="Country" FieldName="Country">
-                                <LayoutItemNestedControlCollection>
-                                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server" SupportsDisabledAttribute="True">
-                                        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="grid" OnCommandButtonInitialize="ASPxGridView1_CommandButtonInitialize"
-                                            KeyFieldName="ID" OnBatchUpdate="ASPxGridView1_BatchUpdate">
-                                            <SettingsEditing Mode="Batch" />
-                                            <Settings ShowStatusBar="Hidden" />
-                                            <Columns>
-                                                <dx:GridViewDataColumn FieldName="C1" />
-                                                <dx:GridViewDataSpinEditColumn FieldName="C2" />
-                                                <dx:GridViewDataTextColumn FieldName="C3" />
-                                                <dx:GridViewDataCheckColumn FieldName="C4" />
-                                                <dx:GridViewDataDateColumn FieldName="C5" />
-                                            </Columns>
-                                            <ClientSideEvents EndCallback="EndCallback" />
-                                        </dx:ASPxGridView>
-
                                     </dx:LayoutItemNestedControlContainer>
                                 </LayoutItemNestedControlCollection>
                             </dx:LayoutItem>
@@ -108,27 +92,43 @@
                             </dx:LayoutItem>
                         </Items>
                     </dx:LayoutGroup>
-                    <dx:LayoutItem ShowCaption="False" HorizontalAlign="Right" Width="100">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer8" runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxButton ID="submitButton" ClientInstanceName="submitButton" runat="server" Text="Submit" Width="100" AutoPostBack="false">
-                                    <ClientSideEvents Click="onSubmit" />
-                                </dx:ASPxButton>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
-                    <dx:LayoutItem ShowCaption="False" HorizontalAlign="Right" Width="100">
-                        <LayoutItemNestedControlCollection>
-                            <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer9" runat="server" SupportsDisabledAttribute="True">
-                                <dx:ASPxButton ID="cancelButton" runat="server" Text="Cancel" Width="100" AutoPostBack="false">
-                                    <ClientSideEvents Click="onCancel" />
-                                </dx:ASPxButton>
-                            </dx:LayoutItemNestedControlContainer>
-                        </LayoutItemNestedControlCollection>
-                    </dx:LayoutItem>
+                    <dx:LayoutGroup Caption="Details">
+                        <Items>
+                            <dx:LayoutItem ShowCaption="False">
+                                <LayoutItemNestedControlCollection>
+                                    <dx:LayoutItemNestedControlContainer ID="LayoutItemNestedControlContainer5" runat="server" SupportsDisabledAttribute="True">
+                                        <dx:ASPxGridView ID="ASPxGridView1" runat="server" ClientInstanceName="grid"
+                                            KeyFieldName="ID"
+                                            OnBatchUpdate="ASPxGridView1_BatchUpdate"
+                                            OnCustomCallback="ASPxGridView1_CustomCallback">
+                                            <SettingsEditing Mode="Batch" />
+                                            <Settings ShowStatusBar="Hidden" />
+                                            <Columns>
+                                                <dx:GridViewDataColumn FieldName="C1" />
+                                                <dx:GridViewDataSpinEditColumn FieldName="C2" />
+                                                <dx:GridViewDataTextColumn FieldName="C3" />
+                                                <dx:GridViewDataCheckColumn FieldName="C4" />
+                                                <dx:GridViewDataDateColumn FieldName="C5" />
+                                            </Columns>
+                                            <ClientSideEvents EndCallback="EndCallback" />
+                                        </dx:ASPxGridView>
+                                    </dx:LayoutItemNestedControlContainer>
+                                </LayoutItemNestedControlCollection>
+                            </dx:LayoutItem>
+                        </Items>
+                    </dx:LayoutGroup>
                 </Items>
             </dx:ASPxFormLayout>
-
+            <div style="text-align: right; padding: 2px">
+                <dx:ASPxButton ID="submitButton" ClientInstanceName="submitButton" runat="server" RenderMode="Link" AutoPostBack="false">
+                    <ClientSideEvents Click="onSubmit" />
+                    <Image IconID="actions_apply_32x32office2013"></Image>
+                </dx:ASPxButton>
+                <dx:ASPxButton ID="cancelButton" ClientInstanceName="cancelButton" runat="server" RenderMode="Link" AutoPostBack="false">
+                    <ClientSideEvents Click="onCancel" />
+                    <Image IconID="actions_cancel_32x32office2013"></Image>
+                </dx:ASPxButton>
+            </div>
         </div>
     </form>
 </body>
