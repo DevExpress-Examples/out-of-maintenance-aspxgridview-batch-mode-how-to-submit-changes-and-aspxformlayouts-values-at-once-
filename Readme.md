@@ -2,7 +2,7 @@
 *Files to look at*:
 
 * [GridDataItem.cs](./CS/App_Code/Models/GridDataItem.cs)
-* [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx.vb](./VB/T510345_VB/Default.aspx.vb))
+* [Default.aspx](./CS/Default.aspx) (VB: [Default.aspx](./VB/T510345_VB/Default.aspx))
 * [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/T510345_VB/Default.aspx.vb))
 <!-- default file list end -->
 # ASPxGridView - Batch Mode - How to submit changes and the ASPxFormLayout’s values at once
