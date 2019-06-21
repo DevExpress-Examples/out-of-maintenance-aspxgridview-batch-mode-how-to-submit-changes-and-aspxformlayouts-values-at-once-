@@ -6,6 +6,9 @@
 * [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/T510345_VB/Default.aspx.vb))
 <!-- default file list end -->
 # ASPxGridView - Batch Mode - How to submit changes and the ASPxFormLayout’s values at once
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t510345/)**
+<!-- run online end -->
 
 
 This example illustrates how to submit changes made in ASPxGridView and ASPxFormLayout’s values at the same time. This task can be done by performing the following steps:
