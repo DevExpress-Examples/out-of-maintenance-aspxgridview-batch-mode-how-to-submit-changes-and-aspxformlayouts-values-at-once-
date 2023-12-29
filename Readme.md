@@ -1,8 +1,3 @@
-<!-- default badges list -->
-![](https://img.shields.io/endpoint?url=https://codecentral.devexpress.com/api/v1/VersionRange/128533026/15.2.15%2B)
-[![](https://img.shields.io/badge/Open_in_DevExpress_Support_Center-FF7200?style=flat-square&logo=DevExpress&logoColor=white)](https://supportcenter.devexpress.com/ticket/details/T510345)
-[![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
-<!-- default badges end -->
 <!-- default file list -->
 *Files to look at*:
 
@@ -11,9 +6,6 @@
 * [Default.aspx.cs](./CS/Default.aspx.cs) (VB: [Default.aspx.vb](./VB/T510345_VB/Default.aspx.vb))
 <!-- default file list end -->
 # ASPxGridView - Batch Mode - How to submit changes and the ASPxFormLayout’s values at once
-<!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t510345/)**
-<!-- run online end -->
 
 
 This example illustrates how to submit changes made in ASPxGridView and ASPxFormLayout’s values at the same time. This task can be done by performing the following steps:
